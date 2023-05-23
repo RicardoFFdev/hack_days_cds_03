@@ -35,7 +35,7 @@ id_cliente,limite_adicional
 142,Negar
 146,Conceder
 148,Negar
-149,Conceder
+149,Negar
 154,Conceder
 155,Conceder
 156,Negar
@@ -48,7 +48,7 @@ id_cliente,limite_adicional
 198,Negar
 203,Negar
 205,Negar
-207,Negar
+207,Conceder
 208,Conceder
 214,Negar
 225,Negar
@@ -201,7 +201,7 @@ id_cliente,limite_adicional
 864,Negar
 868,Negar
 875,Negar
-877,Negar
+877,Conceder
 879,Conceder
 892,Negar
 893,Negar
@@ -335,7 +335,7 @@ id_cliente,limite_adicional
 1395,Negar
 1404,Negar
 1410,Negar
-1429,Negar
+1429,Conceder
 1432,Negar
 1436,Negar
 1441,Negar
@@ -531,7 +531,7 @@ id_cliente,limite_adicional
 2266,Negar
 2275,Negar
 2279,Negar
-2280,Conceder
+2280,Negar
 2286,Negar
 2290,Negar
 2294,Negar
@@ -557,7 +557,7 @@ id_cliente,limite_adicional
 2384,Negar
 2386,Negar
 2394,Negar
-2397,Negar
+2397,Conceder
 2404,Conceder
 2409,Negar
 2420,Negar
@@ -688,7 +688,7 @@ id_cliente,limite_adicional
 2965,Negar
 2968,Negar
 2970,Conceder
-2976,Negar
+2976,Conceder
 2977,Negar
 2979,Negar
 2980,Negar
@@ -1018,8 +1018,8 @@ id_cliente,limite_adicional
 4436,Conceder
 4438,Negar
 4441,Negar
-4444,Conceder
-4446,Conceder
+4444,Negar
+4446,Negar
 4452,Negar
 4453,Negar
 4466,Negar
@@ -1062,7 +1062,7 @@ id_cliente,limite_adicional
 4625,Negar
 4629,Negar
 4633,Negar
-4637,Negar
+4637,Conceder
 4638,Negar
 4643,Conceder
 4645,Conceder
@@ -1445,7 +1445,7 @@ id_cliente,limite_adicional
 6268,Negar
 6270,Negar
 6273,Negar
-6275,Negar
+6275,Conceder
 6277,Negar
 6279,Negar
 6280,Negar
@@ -1657,7 +1657,7 @@ id_cliente,limite_adicional
 7070,Negar
 7080,Negar
 7084,Negar
-7089,Negar
+7089,Conceder
 7097,Negar
 7098,Conceder
 7099,Negar
@@ -1684,7 +1684,7 @@ id_cliente,limite_adicional
 7152,Negar
 7155,Negar
 7156,Negar
-7159,Negar
+7159,Conceder
 7165,Negar
 7166,Negar
 7168,Negar
@@ -1767,7 +1767,7 @@ id_cliente,limite_adicional
 7474,Negar
 7480,Negar
 7484,Negar
-7487,Conceder
+7487,Negar
 7490,Conceder
 7491,Negar
 7492,Negar
@@ -1786,7 +1786,7 @@ id_cliente,limite_adicional
 7547,Negar
 7549,Negar
 7555,Negar
-7556,Negar
+7556,Conceder
 7561,Negar
 7562,Negar
 7565,Negar
@@ -1870,7 +1870,7 @@ id_cliente,limite_adicional
 7905,Negar
 7907,Negar
 7910,Negar
-7917,Negar
+7917,Conceder
 7928,Negar
 7940,Negar
 7942,Negar
@@ -1940,7 +1940,7 @@ id_cliente,limite_adicional
 8191,Negar
 8195,Conceder
 8196,Negar
-8203,Negar
+8203,Conceder
 8209,Negar
 8213,Negar
 8214,Negar
@@ -2046,7 +2046,7 @@ id_cliente,limite_adicional
 8660,Negar
 8663,Conceder
 8667,Negar
-8668,Conceder
+8668,Negar
 8670,Negar
 8677,Negar
 8681,Negar
@@ -2205,7 +2205,7 @@ id_cliente,limite_adicional
 9340,Negar
 9347,Negar
 9348,Negar
-9349,Conceder
+9349,Negar
 9353,Conceder
 9359,Negar
 9362,Negar
@@ -2292,7 +2292,7 @@ id_cliente,limite_adicional
 9739,Negar
 9740,Negar
 9753,Negar
-9760,Negar
+9760,Conceder
 9761,Negar
 9763,Negar
 9766,Negar
@@ -2525,7 +2525,7 @@ id_cliente,limite_adicional
 10672,Negar
 10673,Negar
 10675,Negar
-10678,Conceder
+10678,Negar
 10682,Negar
 10683,Conceder
 10686,Negar
@@ -2883,7 +2883,7 @@ id_cliente,limite_adicional
 12020,Conceder
 12032,Negar
 12034,Conceder
-12035,Negar
+12035,Conceder
 12040,Conceder
 12041,Negar
 12042,Negar
@@ -2998,4 +2998,4 @@ id_cliente,limite_adicional
 12487,Negar
 12489,Negar
 12495,Conceder
-12498,Negar
+12498,Conceder
