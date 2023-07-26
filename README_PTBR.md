@@ -1,4 +1,4 @@
- <h1 align="center"> "Hotel Chain Cancellation Rating" </h1>
+ <h1 align="center"> "Billion Bank Credit Analysis" </h1>
 
 ![Getting Started](./img/bank.jpg)
 
@@ -39,7 +39,7 @@ O modelo de classificação, deve informar se o Billion Bank deve "negar" ou "co
 
 ### O método CRISP-DS foi utilizado como base para o desenvolvimento deste projeto
 
-![Crisp](./img/ciclo.png)
+![Crisp](./img/crisp.jpg)
 
 
 ### 2.1 Ferramentas, IDE's e Bibliotecas
