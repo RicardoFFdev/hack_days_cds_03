@@ -1,139 +1,138 @@
- <h1 align="center"> "Hotel Chain Cancellation Rating" </h1>
+<h1 align="center"> "Billion Bank Credit Analysis" </h1>
 
-![Getting Started](./img/hotel_chain.png)
+![Getting Started](./img/bank.jpg)
 
-
-# Welcome to my portfolio project for the Community DS data competition: "Hotel Chain Cancellation Rating"
+# Welcome to my portfolio project for the Community DS data competition: "Billion Bank"
 
 
 ## 1.0 Business Context
 
-Costa del Data is a traditional Spanish hotel chain that currently operates 4 and 5-star hotels nationwide.
+Billion Bank is a Brazilian digital bank, founded in 2021. It currently offers digital accounts and credit cards.
 
-The company is concerned about its projections for the coming years, aiming for financial recovery with the end of the restrictions imposed by the Covid-19 pandemic.
+When a customer requests a credit limit increase on their credit card, the bank consults a third-party credit company, which provides a recommendation: "deny" or "grant". This response is then conveyed to the customer.
 
-With the reopening of borders, the easing of travel restrictions, and the increase in vaccinations, it was expected that the hotel sector in Spain would regain the expected gains.
+Given that the credit company needs to gather more financial history information about the customer from third parties, the recommendation's return to the bank takes up to 5 business days!
 
-Contrary to this expectation, Costa del Data has seen an increase in its reservation cancellation rate! The management suspects that there has been a change in cancellation behavior by consumers after the pandemic, which has not yet been understood by the chain.
+As a service, with each credit limit increase request made by a customer, the bank incurs an additional consultation cost. To reduce this cost, in 2022, the bank decided to only accept new credit limit increase requests every 3 months.
 
-This has hindered critical strategic actions such as expanding the hotel network, renovating already planned units, and conducting targeted marketing campaigns.
+The bank observed a slight increase in churn in the first semester, which escalated further in the second semester, becoming a concerning issue. The customer service team contacted former clients and found that the main reason for churn was the perception of bureaucracy related to limit increases.
 
-Your team of data scientists has been hired to understand the phenomenon of reservation cancellations. With the results in hand, the marketing team will make more informed decisions, focusing on customer segments with lower cancellation rates, thus reversing the current negative trend.
+To reverse this situation, the bank formulated an action plan with two objectives:
+1 - Streamline the process, allowing customers to request a new limit once a week, with an instant response.
+2 - Deactivate the time-consuming and costly third-party recommendation consultations for limit increases.
 
-Based on the historical reservation data, your team is tasked with developing a cancellation prediction model. The model should predict the target variable "Reservation Canceled," returning 1 in case of cancellation and 0 otherwise.
+To implement this plan, the data science team was tasked with developing an in-house credit card limit increase evaluation model based on the historical recommendations ("deny" or "grant") from the credit company, combined with customer financial history.
 
-For this competition, disregard recent factors such as armed conflicts, energy price increases, commercial agreements, and budget approvals involving Spain, Europe, or the world.
+The classification model should indicate whether Billion Bank should "deny" or "grant" the requested credit limit increase to the customer.
 
-**Source:** [ Kaggle ](https://www.kaggle.com/competitions/cdshackdays4)
+**Source:** [ Kaggle ](https://www.kaggle.com/competitions/cdshackdays3)
 
 
 ## 2.0 Preliminary Planning
 
-* In this competition, Community DS students were divided into squads of 5 participants each. In total, there were 31 squads and over 180 participants.
-* My squad had the following members:
+- In this competition, the students of the Community DS were divided into squads, each consisting of 4 students. In total, we had 24 squads and over 90 participants.
+- My squad had the following composition:
 
-![Squad](./img/squad.png)
+![Squad](./img/leaderboard.png)
 
-
-### The CRISP-DM method was used as the basis for developing this project.
+### The CRISP-DS method was used as the basis for developing this project
 
 ![Crisp](./img/crisp.jpg)
 
 
 ### 2.1 Tools, IDEs, and Libraries
 
-* Python 3.09
-* Visual Studio Code
-* Jupyter Notebook
-* Deepnote
-* Libraries: Seaborn, Pandas, Numpy, Inflection, Scipy, Dython_Nominal, XGBoost, SKLearn, Category Encoders e LightGBM
+- Python 3.09
+- Visual Studio Code
+- Jupyter Notebook
+- Deepnote
+- Libraries: Seaborn, Pandas, Numpy, Inflection, Scipy, XGBoost, SKLearn, Category Encoders, and LightGBM
 
 ### 2.2 Final Product
 
-* A classification solution that provides the best possible prediction for a reservation cancellation within the hotel chain. This will enable the hotel chain to make informed decisions based on customer profiles to prevent cancellations of existing reservations.
+- A classification solution that provides the best possible prediction for the cancellation of a reservation made in the hotel network. This way, the hotel network can take appropriate measures based on their customers' profiles to avoid the cancellation of already made reservations.
 
 
 ## 3.0 Data
 
-##### These data are public and were downloaded from the [Kaggle](https://www.kaggle.com/competitions/cdshackdays4).
+##### This data is public and was downloaded from the [Kaggle](https://www.kaggle.com/competitions/cdshackdays3) webpage.
 
 ### 3.1 Source Attributes
 
-| **Attributes**                           |  **Type**  |  **Description**                                            |
-| ----------------------------------------|------------|--------------------------------------------------------------|
-| id                                      | int64      | Identification number                                        |
-| classificacao_do_hotel                  | object     | Hotel rating (number of stars)                               |
-| meses_da_reserva_ate_o_check-in         | int64      | Number of months from the reservation date to check-in date  |
-| numero_de_pernoites_reservadas          | int64      | Number of reserved nights                                    |
-| numero_de_hospedes                      | float64    | Number of guests                                             |
-| regime_de_alimentacao                   | object     | Type of included meal plan                                   |
-| nacionalidade                           | object     | Nationality                                                  |
-| forma_de_reserva                        | object     | Booking channel                                              |
-| ja_se_hospedou_anterioremente           | object     | Whether the guest has previously stayed at the hotel         |
-| tipo_do_quarto_reservado                | object     | Reserved room type                                           |
-| reserva_feita_por_agencia_de_turismo    | object     | Whether the booking was made through a travel agency         |
-| reserva_feita_por_empresa               | object     | Whether the booking was made by a company                    |
-| reserva_com_estacionamento              | object     | Whether the reservation includes parking for a vehicle       |
-| reserva_com_observacoes                 | object     | Special requests made during the reservation                 |
-| reserva_cancelada                       | int64      | Target variable indicating if the reservation was cancelled  |
+| **Attributes**                  |  **Type**  |  **Description**                                                          |
+| ------------------------------- | ---------- | ------------------------------------------------------------------------- |
+| id_cliente                      |   int64    | Unique customer identifier                                                |
+| idade                           |   int64    | Customer's age                                                            |
+| saldo_atual                     | float64    | Current account balance of the customer                                    |
+| divida_atual                    | float64    | Current debt amount of the customer                                       |
+| renda_anual                     | float64    | Customer's annual income                                                  |
+| valor_em_investimentos          | float64    | Total investment value                                                    |
+| taxa_utilizacao_credito         | float64    | Credit card utilization rate                                              |
+| num_emprestimos                 |   int64    | Number of loans taken by the customer                                     | 
+| num_contas_bancarias            |   int64    | Number of bank accounts held by the customer                              |
+| num_cartoes_credito             |   int64    | Number of credit cards owned by the customer                              |
+| dias_atraso_dt_venc             |   int64    | Number of days overdue on credit card payments                            |
+| num_pgtos_atrasados             |   int64    | Number of missed installment payments                                     |
+| num_consultas_credito           |   int64    | Number of credit inquiries                                                |
+| taxa_juros                      |   int64    | Interest rate value                                                       |
+| investe_exterior                |  object    | Whether the customer has investments abroad                               |
+| pessoa_polit_exp                |  object    | Whether the customer is a politically exposed person                      |
+| limite_adicional                |  object    | Whether the customer will obtain additional credit limit (target variable) |    
 
+### Created Attributes
 
-### 3.2 Created Attributes
+Investment Potential -> calculated by dividing the investment value by the customer's age.
+Default Potential -> calculated by dividing the current debt by the customer's age.
+Available Investment Potential -> calculated by subtracting the Default Potential from the Investment Potential.
+Indebtedness -> the result of dividing the current debt by the current income.
 
-* room_rating_percentage -> the percentage of room rating between 4 and 5 stars
-* meal_plan_combo -> the derived meal plan based on the room type
-* nights_per_hotel -> the median value between the reserved room type and the hotel rating.
-
-
-## Visualization of Numerical Attributes in Bar Graph
+## Visualization of numerical attributes in a bar plot
 ![histplot](./img/histplot.png)
 
-## Visualization of Months from Reservation to Check-in Date 
-![scatter](./img/scatter.png)
+## Visualization of attribute correlations.
+![associations](./img/associations.png)
 
-## Visualization of Categorical Attribute Correlation using Cramer's Formula
-![cramer](./img/cramer.png)
-
-
-## Visualization of Categorical Attribute Correlation using Theil's Uncertainty Coefficient
-![theil](./img/theil.png)
+## Correlation heatmap of attributes using the "Pearson" method.
+![associations](./img/heatmap_pearson.png)
 
 
+## 4.0 Data Modeling
 
-## 4.0 Data Modelling
+In this stage, the data was prepared for the commencement of applying Machine Learning models.<br>
+Categorical attributes were transformed using Label Encoder.
+Outliers in the columns age, num_cartoes_credito, and num_emprestimos were replaced with the median value.
+The columns id_cliente and pessoa_polit_exp were excluded as they were causing noise in the ML algorithm results.
 
-In this stage, the data was prepared for the start of the Machine Learning modeling process.<br>
-Numerical and categorical rescaling techniques were applied using 'Label Encoder', 'Target Encoder', and 'Robust Scaler'.
 
 ## 5.0 Machine Learning Modeling
 
-In the process of selecting Machine Learning models, tests and training were performed using six types of classifiers: Random Forest Classifier, Extra Tree Classifier, XGBoost Classifier, LGBM Classifier, K-Nearest Neighbors, and Decision Tree Classifier.<br>
-The evaluation metric used for the classification algorithms was the F1 Score.
+In the process of choosing Machine Learning models, tests and training were conducted with six types of classifiers: Random Forest Classifier, LGBM Classifier, XGBoost Classifier, K-Nearest Neighbors, and C-Support Vector Classification Model.<br>
+The metric used for evaluating classification algorithms was the F1 Score.
 
 ## Performance
 
-![perform](./img/score.png)
+![perform](./img/ml_perform.png)
 
 
 ## 6.0 Ensemble Learning
 
-Here, we applied the technique of Ensemble Learning using the 'Voting Classifier' from the 'Scikit-learn' library.<br>
-This algorithm combines the concepts of different Machine Learning classifiers and uses majority voting or averaging of predicted probabilities to make predictions for the target class. This classification can be used to achieve performance symmetry in the overall data balance. In other words, the algorithm leverages the strengths of different Machine Learning algorithms to balance out their weaknesses in classification.
+Here, we applied the Ensemble Learning technique using the 'Voting Classifier' from the 'Scikit Learn' library.<br>
+This algorithm combines the concepts of different Machine Learning classifiers and uses the majority vote or the average of predicted probabilities to make predictions for the target class. This classification can be used to achieve performance symmetry in the overall data balance. In other words, the algorithm leverages the strengths of a particular Machine Learning algorithm to balance out its weaknesses in classification.
 
-## Final Performance:
+## Final Performance of:
 
-# 0.9731184748459742
+# 0.928834
 
-## 7.0 Conclusão
 
-After 32 hours of Hack Days, submissions were closed and the Leaderboard was finalized.
-Our team's work achieved a final accuracy of 0.97146, and we made a total of 21 submissions. The highest score is the one that counts in this type of competition.<br>
-In the overall Leaderboard, we secured the 4th position, proving that we were on the right track with our project.
-The final ranking was decided in the hundredths place, demonstrating how intense the competition was in the final stretch, and teams were well-balanced and focused on delivering a good final work.<br>
-The EquiPÃO dos dados team managed to deliver an excellent work within a fair timeframe, so we have a lot to celebrate.<br>
-The learning experience in this short period of time was HUGE!!!
-I would like to express my gratitude to my teammates: Samuel, Juli, Valéria, and Wilmara. I also want to thank our teachers and everyone in the DS Community!!!
+## 7.0 Conclusion
 
+After 32 hours of intensive hacking during the Hack Days event, the submission phase concluded, and the Leaderboard was sealed. Our team's effort culminated in a final accuracy score of 0.88466 in the Private classification - the most crucial metric in this kind of competition.
+
+Securing the 3rd position in the overall leaderboard solidified our belief that we were steering our project in the right direction. The final rankings were determined down to the hundredths, underscoring the intense competition in the final stretch, with teams being evenly matched and unwaveringly dedicated to delivering a high-quality end result.
+
+The pyTontos dos Dados team takes immense pride in delivering an exceptional project within a tight timeframe, warranting celebrations all around. The learning amassed in this brief period has been truly monumental!
+
+I extend my heartfelt gratitude to my incredible teammates - Raquel, Eduardo, and Fernando. A special thank you also goes out to our mentors and the entire DS Community for their unwavering support and guidance throughout this journey!
 
 ## Leaderboard
 
