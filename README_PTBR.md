@@ -48,7 +48,7 @@ O modelo de classificação, deve informar se o Billion Bank deve "negar" ou "co
 * Visual Studio Code
 * Jupyter Notebook
 * Deepnote
-* Bibliotecas: Seaborn, Pandas, Numpy, Inflection, Scipy, Dython_Nominal, XGBoost, SKLearn, Category Encoders e LightGBM
+* Bibliotecas: Seaborn, Pandas, Numpy, Inflection, Scipy, XGBoost, SKLearn, Category Encoders e LightGBM
 
 ### 2.2 Produto final
 
@@ -57,85 +57,80 @@ O modelo de classificação, deve informar se o Billion Bank deve "negar" ou "co
 
 ## 3.0 Dados
 
-##### Estes dados são públicos e foram baixados na página web do [Kaggle](https://www.kaggle.com/competitions/cdshackdays4).
+##### Estes dados são públicos e foram baixados na página web do [Kaggle](https://www.kaggle.com/competitions/cdshackdays3).
 
 ### 3.1 Atributos de origem
+|**Atributos**                    |  **Tipo**  |  **Descrição**                                                              |
+| --------------------------------|------------|-----------------------------------------------------------------------------|
+|id_cliente                       |   int64    | Número único de registro dos clientes                                       |
+|idade                            |   int64    | Idade do cliente                                                            |
+|saldo_atual                      | float64    | Saldo atual da conta do cliente                                             |
+|divida_atual                     | float64    | Valor atual da dívida do cliente                                            |
+|renda_anual                      | float64    | Renda total anual do cliente                                                |
+|valor_em_investimentos           | float64    | Valor total em investimentos                                                |
+|taxa_utilizacao_credito          | float64    | Limite utilizado do cartão de crédito                                       |
+|num_emprestimos                  |   int64    | Quantidade de empréstimos do cliente                                        | 
+|num_contas_bancarias             |   int64    | Quantidade de contas bancárias do cliente                                   |
+|num_cartoes_credito              |   int64    | Quantidade de cartões de crédito do cliente                                 |
+|dias_atraso_dt_venc              |   int64    | Quantidade de dias em atraso no cartão                                      |
+|num_pgtos_atrasados              |   int64    | Quantidade de parcelas de pagamentos atrasadas                              |
+|num_consultas_credito            |   int64    | Quantidade de consultas para crédito                                        |
+|taxa_juros                       |   int64    | Valor da taxa de juros                                                      |
+|investe_exterior                 |  object    | Se o cliente tem investimento em outros países                              |
+|pessoa_polit_exp                 |  object    | Se o cliente é pessoa politicamente exposta                                 |
+|limite_adicional                 |  object    | Se o cliente irá, ou não, obter limite adicional de crédito (variável alvo) |    
 
-| **Atributos**                           |  **Tipo**  |  **Descrição**                                               |
-| ----------------------------------------|------------|--------------------------------------------------------------|
-| id                                      | int64      | Número de indentificação                                     |
-| classificacao_do_hotel                  | object     | Quantidade de estrelas do hotel                              |
-| meses_da_reserva_ate_o_check-in         | int64      | Quantidade de meses da reserva até o check-in                |
-| numero_de_pernoites_reservadas          | int64      | Número de pernoites reservados                               |
-| numero_de_hospedes                      | float64    | Número de de hóspedes                                        |
-| regime_de_alimentacao                   | object     | Tipo de refeição inclusa                                     |
-| nacionalidade                           | object     | Nacionalidade                                                |
-| forma_de_reserva                        | object     | Como a reserva foi realizada                                 |
-| ja_se_hospedou_anterioremente           | object     | Se o cliente já se hospedou no hotel                         |
-| tipo_do_quarto_reservado                | object     | Tipo de quanrto/suíte                                        |
-| reserva_feita_por_agencia_de_turismo    | object     | Se a reserva foi feita em agência de turismo                 |
-| reserva_feita_por_empresa               | object     | Se a reserva foi realizada por uma empresa                   |
-| reserva_com_estacionamento              | object     | Se a reserva inclui vaga para estacionamento de veículo      |
-| reserva_com_observacoes                 | object     | Observações a serem feitas no ato da reserva                 |
-| reserva_cancelada                       | int64      | Variável alvo, saber ser haverá cancelamento da reserva      |
+### Atributos criados
 
-
-### 3.2 Atributos criados
-
-* estrelas_quarto -> o percentual de classificação do quarto entre 4 e 5 estrelas
-* combo_alimentacao -> o tipo de regime de alimentação derivado do tipo de quarto
-* nights_per_hotel -> a mediana dentre o tipo de quarto locado e a classificação do hotel.
-
+Potencial de investimento -> calculado a partir do valor de investimento dividido pela idade do cliente.
+Potencial de inadimplência -> calculado a partir da dívida atual dividido pela idade do cliente.
+Potencial livre para investimento -> calculado a partir da subtração do potencial de inadimplência pelo potencial de investimento.
+Endividamento -> é o resultado da divisão da dívida atual pela renda atual.
 
 ## Visualização dos atributos numéricos em gráfico de barras
 ![histplot](./img/histplot.png)
 
-## Visualização dos meses da reserva até a data do check-in 
-![scatter](./img/scatter.png)
+## Visualização da correlação dos Atributos.
+![associations](./img/associations.png)
 
-## Visualização da correlação de Atributos Categóricos utilizando a fórmula Cramer's.
-![cramer](./img/cramer.png)
-
-
-## Visualização da correlação de Atributos Categóricos utilizando a fórmula do Coeficiente de Incerteza de Theil.
-![theil](./img/theil.png)
-
-
+## Mapa de calor da correlação dos Atributos pelo método "Pearson".
+![associations](./img/heatmap_pearson.png)
 
 ## 4.0 Modelagem dos dados
 
 Nesta etapa, os dados foram preparados para o início das aplicações dos modelos de Machine Learning.<br>
-Foram utilizadas técnicas de Rescaling do tipo numérico e categórico, através do 'Label Encoder', 'Target Encoder' e 'Robust Scaler'
+Os atributos categóricos foram trasnformados utilizando o Label Encorder.
+Os outliers das colunas idade, num_cartoes_credito e num_emprestimos foram substituídos pela valor da mediana.
+As colunas  id_cliente e pessoa_polit_exp foram excluídas porque estavam causando ruídos nos resultados dos algoritmos de ML. 
 
 ## 5.0 Machine Learning Modeling
 
-Nesse processo de escolha de modelos de Machine Learning, foram relizados testes e treinamentos com seis tipos de Classificadores, eles são os seguintes: Random Forest Classifier, Extra Tree Classifier, XGBoost Classifier, LGBM Classifier, K-Nearest Neighbors e o Decision Tree Classifier.<br>
+Nesse processo de escolha de modelos de Machine Learning, foram relizados testes e treinamentos com seis tipos de Classificadores, eles são os seguintes: Random Forest Classifier, LGBM Classifier, XGBoost Classifier, K-Nearest Neighbors e o Model C-Support Vector Classification.<br>
 A métrica utilizada para a avalição dos algoritmos de classificação foi o F1 Score.
 
 ## Performance
 
-![perform](./img/score.png)
+![perform](./img/ml_perform.png)
 
 
 ## 6.0 Ensemble Learning
 
 Aqui aplicamos a técnica de Ensemble Learning, para aplicação de tal técnica utilizamos a biblioteca 'Voting Classifier' da 'Scikit Learn'.<br>
-Este algoritmo combina o conceito de diferentes classificadores de Machine Learning, e usa a maioria dos votos ou a média das probabilidades previstas, para
-assim, realizar a predição da classe alvo. Essa classificação pode se usada para alcançar uma simetria de performance no balanceamento geral dos dados. Em outras palavras, o algoritmo potencializa as vantagens de um determinado algoritmo de Machine Learning para balancear as suas fraquezas na classificação.
+Este algoritmo combina o conceito de diferentes classificadores de Machine Learning, e usa a maioria dos votos ou a média das probabilidades previstas, para assim, realizar a predição da classe alvo. Essa classificação pode se usada para alcançar uma simetria de performance no balanceamento geral dos dados. Em outras palavras, o algoritmo potencializa as vantagens de um determinado algoritmo de Machine Learning para balancear as suas fraquezas na classificação.
 
 ## Performance Final de:
 
-# 0.9731184748459742
+# 0.928834
 
 ## 7.0 Conclusão
 
-Passadas as 32 horas de duração do Hack Days, as submissões foram encerradas e o Leaderboard foi fechado.
-O trabalho desenvolvido pelo nosso time apresentou uma acurácia final de 0.97146 e nós realizamos 21 submissões ao todo. A nota mais alta é a que conta neste tipo de competição.<br>
-No fechamento geral do leaderboard ficamos na 4º colocação, provando que estávamos desenvolvendo nosso projeto no caminho certo. 
-A classificação final foi decidida na casa dos centésimos, mostrando assim, como a disputa foi super acirrada na reta final e as equipes estavam balanceadas e focadas na entrega de um bom trabalho final.<br>
-Nós da EquiPÃO dos dados conseguimos entregar um excelente trabalho, num intervalo de tempo super justo, então temos muito o que comemorar.<br>
-O aprendizado nesse curto espaço de tempo foi ENORME!!!
-Só tenho a agradecer os meus companheiros de equipe, são eles: Samuel, Juli, Valéria e Wilmara. Deixo também o meu agradecimento aos nossos professores e a todos da Comunidade DS!!!
+Após 32 horas de intensa programação durante o evento Hack Days, a fase de submissões foi encerrada e o Leaderboard foi selado. O esforço da nossa equipe culminou em uma pontuação de acurácia final de 0.88466 na classificação Privada - a métrica mais crucial nesse tipo de competição.
+
+Garantir a 3ª posição no quadro geral de classificação solidificou nossa crença de que estávamos conduzindo nosso projeto na direção certa. As classificações finais foram determinadas nos centésimos, destacando a competição acirrada na reta final, com equipes igualmente equilibradas e dedicadas a entregar um resultado final de alta qualidade.
+
+A equipe pyTontos dos Dados se orgulha imensamente de entregar um projeto excepcional dentro de um prazo apertado, o que merece comemorações por todos os lados. O aprendizado acumulado nesse curto período foi verdadeiramente monumental!
+
+Estendo minha sincera gratidão aos meus incríveis colegas de equipe - Raquel, Eduardo e Fernando. Um agradecimento especial também vai para nossos mentores e para toda a Comunidade DS pelo apoio e orientação incansáveis ao longo dessa jornada!
 
 
 ## Leaderboard
