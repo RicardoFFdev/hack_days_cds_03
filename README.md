@@ -46,7 +46,7 @@ The classification model should indicate whether Billion Bank should "deny" or "
 - Visual Studio Code
 - Jupyter Notebook
 - Deepnote
-- Libraries: Seaborn, Pandas, Numpy, Inflection, Scipy, XGBoost, SKLearn, Category Encoders, and LightGBM
+- Libraries: Seaborn, Pandas, Numpy, Scipy, XGBoost, SKLearn, Category Encoders, K-Nearest Neighbor and LightGBM.
 
 ### 2.2 Final Product
 
@@ -81,9 +81,9 @@ The classification model should indicate whether Billion Bank should "deny" or "
 
 ### Created Attributes
 
-Investment Potential -> calculated by dividing the investment value by the customer's age.
-Default Potential -> calculated by dividing the current debt by the customer's age.
-Available Investment Potential -> calculated by subtracting the Default Potential from the Investment Potential.
+Investment Potential -> calculated by dividing the investment value by the customer's age.<br>
+Default Potential -> calculated by dividing the current debt by the customer's age.<br>
+Available Investment Potential -> calculated by subtracting the Default Potential from the Investment Potential.<br>
 Indebtedness -> the result of dividing the current debt by the current income.
 
 ## Visualization of numerical attributes in a bar plot
@@ -99,8 +99,8 @@ Indebtedness -> the result of dividing the current debt by the current income.
 ## 4.0 Data Modeling
 
 In this stage, the data was prepared for the commencement of applying Machine Learning models.<br>
-Categorical attributes were transformed using Label Encoder.
-Outliers in the columns age, num_cartoes_credito, and num_emprestimos were replaced with the median value.
+Categorical attributes were transformed using Label Encoder.<br>
+Outliers in the columns age, num_cartoes_credito, and num_emprestimos were replaced with the median value.<br>
 The columns id_cliente and pessoa_polit_exp were excluded as they were causing noise in the ML algorithm results.
 
 
