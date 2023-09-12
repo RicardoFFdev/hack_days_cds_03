@@ -52,7 +52,7 @@ O modelo de classificação, deve informar se o Billion Bank deve "negar" ou "co
 
 ### 2.2 Produto final
 
-* Uma solução de classificação que aponte a melhor previsão possível para um cancelamento de uma reserva realizada na rede. Dessa maneira a rede hoteleira poderá tomar as melhores medidas cabíveis, embasada nos perfis dos seus clientes, para poder evitar o cancelamento de reservas já realizadas.
+* O produto final será a recomendação que o time de cientistas de dados irá apontar. Serão atribuídos os valores "negar" ou "conceder" de acordo com a análise e a aplicação dos modelos de Aprendizado de Máquina. Sendo assim, o resultado final será apresentado de maneira precisa e rápida, agilizando toda a rotina de análise de crédito do banco.
 
 
 ## 3.0 Dados
@@ -60,25 +60,25 @@ O modelo de classificação, deve informar se o Billion Bank deve "negar" ou "co
 ##### Estes dados são públicos e foram baixados na página web do [Kaggle](https://www.kaggle.com/competitions/cdshackdays3).
 
 ### 3.1 Atributos de origem
-|**Atributos**                    |  **Tipo**  |  **Descrição**                                                              |
-| --------------------------------|------------|-----------------------------------------------------------------------------|
-|id_cliente                       |   int64    | Número único de registro dos clientes                                       |
-|idade                            |   int64    | Idade do cliente                                                            |
-|saldo_atual                      | float64    | Saldo atual da conta do cliente                                             |
-|divida_atual                     | float64    | Valor atual da dívida do cliente                                            |
-|renda_anual                      | float64    | Renda total anual do cliente                                                |
-|valor_em_investimentos           | float64    | Valor total em investimentos                                                |
-|taxa_utilizacao_credito          | float64    | Limite utilizado do cartão de crédito                                       |
-|num_emprestimos                  |   int64    | Quantidade de empréstimos do cliente                                        | 
-|num_contas_bancarias             |   int64    | Quantidade de contas bancárias do cliente                                   |
-|num_cartoes_credito              |   int64    | Quantidade de cartões de crédito do cliente                                 |
-|dias_atraso_dt_venc              |   int64    | Quantidade de dias em atraso no cartão                                      |
-|num_pgtos_atrasados              |   int64    | Quantidade de parcelas de pagamentos atrasadas                              |
-|num_consultas_credito            |   int64    | Quantidade de consultas para crédito                                        |
-|taxa_juros                       |   int64    | Valor da taxa de juros                                                      |
-|investe_exterior                 |  object    | Se o cliente tem investimento em outros países                              |
-|pessoa_polit_exp                 |  object    | Se o cliente é pessoa politicamente exposta                                 |
-|limite_adicional                 |  object    | Se o cliente irá, ou não, obter limite adicional de crédito (variável alvo) |    
+|**Atributos**               |  **Tipo**  |  **Descrição**                                                              |
+| ---------------------------|------------|-----------------------------------------------------------------------------|
+|id_cliente                  |   int64    | Número único de registro dos clientes                                       |
+|idade                       |   int64    | Idade do cliente                                                            |
+|saldo_atual                 |   float64  | Saldo atual da conta do cliente                                             |
+|divida_atual                |   float64  | Valor atual da dívida do cliente                                            |
+|renda_anual                 |   float64  | Renda total anual do cliente                                                |
+|valor_em_investimentos      |   float64  | Valor total em investimentos                                                |
+|taxa_utilizacao_credito     |   float64  | Limite utilizado do cartão de crédito                                       |
+|num_emprestimos             |   int64    | Quantidade de empréstimos do cliente                                        | 
+|num_contas_bancarias        |   int64    | Quantidade de contas bancárias do cliente                                   |
+|num_cartoes_credito         |   int64    | Quantidade de cartões de crédito do cliente                                 |
+|dias_atraso_dt_venc         |   int64    | Quantidade de dias em atraso no cartão                                      |
+|num_pgtos_atrasados         |   int64    | Quantidade de parcelas de pagamentos atrasadas                              |
+|num_consultas_credito       |   int64    | Quantidade de consultas para crédito                                        |
+|taxa_juros                  |   int64    | Valor da taxa de juros                                                      |
+|investe_exterior            |   object   | Se o cliente tem investimento em outros países                              |
+|pessoa_polit_exp            |   object   | Se o cliente é pessoa politicamente exposta                                 |
+|limite_adicional            |   object   | Se o cliente irá, ou não, obter limite adicional de crédito (variável alvo) |    
 
 ### Atributos criados
 

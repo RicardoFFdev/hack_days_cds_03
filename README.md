@@ -50,7 +50,7 @@ The classification model should indicate whether Billion Bank should "deny" or "
 
 ### 2.2 Final Product
 
-- A classification solution that provides the best possible prediction for the cancellation of a reservation made in the hotel network. This way, the hotel network can take appropriate measures based on their customers' profiles to avoid the cancellation of already made reservations.
+* The final product will be the recommendation provided by the data science team. Values of "deny" or "grant" will be assigned based on the analysis and application of Machine Learning models. Therefore, the final result will be presented accurately and swiftly, streamlining the entire credit analysis process for the bank.
 
 
 ## 3.0 Data
