@@ -37,7 +37,7 @@ The classification model should indicate whether Billion Bank should "deny" or "
 - Fernando Roney
 - Ricardo Freitas Fernandes
 
-![Squad](./img/squad.png.png)
+![Squad](./img/squad.png)
 
 ### The CRISP-DS method was used as the basis for developing this project
 
