@@ -32,8 +32,12 @@ The classification model should indicate whether Billion Bank should "deny" or "
 
 - In this competition, the students of the Community DS were divided into squads, each consisting of 4 students. In total, we had 24 squads and over 90 participants.
 - My squad had the following composition:
+- Raquel Rocha Silva Rego
+- Eduardo
+- Fernando Roney
+- Ricardo Freitas Fernandes
 
-![Squad](./img/leaderboard.png)
+![Squad](./img/squad.png.png)
 
 ### The CRISP-DS method was used as the basis for developing this project
 
